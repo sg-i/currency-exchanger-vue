@@ -86,7 +86,8 @@
             // Проходим по ключам в объекте Valute и добавляем курсы валют в ratesData
             Object.keys(data.Valute).forEach((code) => {
               const value = data.Valute[code].Value;
-              ratesData[code] = 1 / value;
+              const nominal = data.Valute[code].Nominal;
+              ratesData[code] = (1 / value) * nominal;
             });
 
             fx.base = 'RUB';
